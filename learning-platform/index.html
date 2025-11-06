@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Platform CI/CD + GitOps Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <h1>🚀 Learning Platform CI/CD + GitOps Dashboard</h1>
+    <nav>
+      <ul>
+        <li><a href="#pipeline">Pipeline</a></li>
+        <li><a href="#status">Status</a></li>
+        <li><a href="#team">Team</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="pipeline" class="pipeline-section">
+    <h2>⚙️ End-to-End CI/CD Pipeline</h2>
+    <div class="pipeline">
+      <div class="stage" data-stage="Code">💻 Code</div>
+      <div class="stage" data-stage="Build">🛠 Build</div>
+      <div class="stage" data-stage="Test">🧪 Test</div>
+      <div class="stage" data-stage="Deploy">🚀 Deploy</div>
+      <div class="stage" data-stage="Monitor">📊 Monitor</div>
+    </div>
+    <button id="startPipeline">Start Pipeline</button>
+  </section>
+
+  <section id="status" class="status-section">
+    <h2>📡 System Deployment Status</h2>
+    <div id="statusDisplay">Waiting for pipeline to start...</div>
+    <div id="progressBarContainer">
+      <div id="progressBar"></div>
+    </div>
+  </section>
+
+  <section id="team" class="team-section">
+    <h2>👨‍💻 DevOps Team</h2>
+    <div class="team-container">
+      <div class="member">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Aman">
+        <h3>Aman Kumar</h3>
+        <p>DevOps Engineer</p>
+      </div>
+      <div class="member">
+        <img src="https://cdn-icons-png.flaticon.com/512/236/236831.png" alt="Updeep">
+        <h3>Updeep Singh</h3>
+        <p>Cloud Architect</p>
+      </div>
+      <div class="member">
+        <img src="https://cdn-icons-png.flaticon.com/512/145/145867.png" alt="Rudhraksh">
+        <h3>Rudhraksh Sharma</h3>
+        <p>Automation Specialist</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Learning Platform | Powered by AWS, Docker & GitOps 🚀</p>
+  </footer>
+</body>
+</html>
