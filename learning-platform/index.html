@@ -1,67 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Learning Platform CI/CD + GitOps Dashboard</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Learning Platform Pro — CI/CD + DevTinder Hub</title>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r148/three.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="navbar">
-    <h1>🚀 Learning Platform CI/CD + GitOps Dashboard</h1>
-    <nav>
-      <ul>
-        <li><a href="#pipeline">Pipeline</a></li>
-        <li><a href="#status">Status</a></li>
-        <li><a href="#team">Team</a></li>
-      </ul>
-    </nav>
+  <header class="header">
+    <h1>🚀 Learning Platform Pro — CI/CD + DevTinder Hub</h1>
+    <div class="nav">
+      <a href="#pipeline">Pipeline</a>
+      <a href="#courses">Courses</a>
+      <a href="#devtinder">Team</a>
+      <a href="#contact">Contact</a>
+      <button id="authBtn" class="btn secondary">Login / Signup</button>
+    </div>
   </header>
 
-  <section id="pipeline" class="pipeline-section">
-    <h2>⚙️ End-to-End CI/CD Pipeline</h2>
-    <div class="pipeline">
-      <div class="stage" data-stage="Code">💻 Code</div>
-      <div class="stage" data-stage="Build">🛠 Build</div>
-      <div class="stage" data-stage="Test">🧪 Test</div>
-      <div class="stage" data-stage="Deploy">🚀 Deploy</div>
-      <div class="stage" data-stage="Monitor">📊 Monitor</div>
-    </div>
-    <button id="startPipeline">Start Pipeline</button>
-  </section>
-
-  <section id="status" class="status-section">
-    <h2>📡 System Deployment Status</h2>
-    <div id="statusDisplay">Waiting for pipeline to start...</div>
-    <div id="progressBarContainer">
-      <div id="progressBar"></div>
-    </div>
-  </section>
-
-  <section id="team" class="team-section">
-    <h2>👨‍💻 DevOps Team</h2>
-    <div class="team-container">
-      <div class="member">
-        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Aman">
-        <h3>Aman Kumar</h3>
-        <p>DevOps Engineer</p>
+  <main class="container">
+    <!-- Welcome + Quick Actions -->
+    <section class="card flex welcomeCard">
+      <div>
+        <div class="welcomeTitle" id="greetingTitle">Welcome to Learning Platform Pro</div>
+        <div class="small">Interactive CI/CD learning, 3D pipeline, courses and developer networking</div>
+        <div style="margin-top:10px;">
+          <button id="runDemoBtn" class="btn">Try Demo Pipeline</button>
+          <button id="openCoursesBtn" class="btn secondary">Open Courses</button>
+        </div>
       </div>
-      <div class="member">
-        <img src="https://cdn-icons-png.flaticon.com/512/236/236831.png" alt="Updeep">
-        <h3>Updeep Singh</h3>
-        <p>Cloud Architect</p>
+      <div style="text-align:right">
+        <div id="userPanel" class="userBadge">Not signed in</div>
+        <div class="small" style="margin-top:8px">Sign up to save progress & chat with devs</div>
       </div>
-      <div class="member">
-        <img src="https://cdn-icons-png.flaticon.com/512/145/145867.png" alt="Rudhraksh">
-        <h3>Rudraksh Bhalerao</h3>
-        <p>Automation Specialist</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <p>© 2025 Learning Platform | Powered by AWS, Docker & GitOps 🚀</p>
-  </footer>
+    <div class="grid">
+      <!-- 3D Pipeline -->
+      <section id="pipeline" class="card">
+        <h2>🔧 3D CI/CD Pipeline</h2>
+        <div class="pipelineWrap">
+          <canvas id="threeCanvas"></canvas>
+          <div class="pipelineOverlay">
+            <div class="legend"><span>Nodes: Code → Build → Test → Deploy → Monitor</span></div>
+            <div id="pipelineStatus" class="small">Status: Idle</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;display:flex;gap:8px">
+          <button id="start3DPipeline" class="btn">Start 3D Pipeline</button>
+          <button id="explainPipeline" class="btn secondary">Step-by-step</button>
+        </div>
+      </section>
+
+      <!-- Courses -->
+      <section id="courses" class="card">
+        <h2>📚 Courses</h2>
+        <div id="coursesList" class="coursesColumn">
+          <!-- injected by JS -->
+        </div>
+      </section>
+
+      <!-- DevTinder -->
+      <section id="devtinder" class="card">
+        <h2>🤝 DevTinder — Meet Developers</h2>
+        <div class="devtinderList" id="devList"></div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="card contactCard">
+        <h2>📞 Contact & Feedback</h2>
+        <div class="contactBox">
+          <div class="contactLeft">
+            <div class="small">Have a question or want to collaborate? Send us a message.</div>
+            <div style="margin-top:14px">
+              <input id="contactName" placeholder="Full name" />
+              <input id="contactEmail" placeholder="Email address" />
+              <textarea id="contactMessage" placeholder="How can we help?"></textarea>
+            </div>
+          </div>
+          <div class="contactRight">
+            <div class="contactMeta">
+              <strong>Contact</strong>
+              <p>support@learningpro.example</p>
+              <p class="small">Response within 24–48 hours (demo storage)</p>
+            </div>
+            <div style="margin-top:auto">
+              <button id="sendContact" class="btn">Send Message</button>
+              <button id="clearContact" class="btn secondary">Clear</button>
+            </div>
+          </div>
+        </div>
+        <div id="contactResult" class="small" style="margin-top:10px"></div>
+      </section>
+    </div>
+
+    <div class="footer">© 2025 Learning Platform Pro — Built with HTML/CSS/JS + Three.js</div>
+  </main>
+
+  <!-- Modal Backdrop -->
+  <div id="modalBackdrop" class="modalBackdrop">
+    <div class="modal" id="mainModal">
+      <span class="closeX" id="closeModal">✕</span>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
