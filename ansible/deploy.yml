@@ -1,0 +1,76 @@
+---
+- name: Deploy N-Queen Visualiser on EC2
+  hosts: webservers
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Update and install Docker
+      apt:
+        name:
+          - docker.io
+          - docker-compose
+        state: present
+        update_cache: yes
+
+    - name: Start Docker service
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Add ubuntu user to docker group
+      user:
+        name: ubuntu
+        groups: docker
+        append: yes
+
+    - name: Create app directory
+      file:
+        path: /home/ubuntu/app
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+
+    - name: Copy project files
+      copy:
+        src: ../project/
+        dest: /home/ubuntu/app/project/
+        owner: ubuntu
+        group: ubuntu
+
+    - name: Copy Dockerfile
+      copy:
+        src: ../Dockerfile
+        dest: /home/ubuntu/app/Dockerfile
+        owner: ubuntu
+        group: ubuntu
+
+    - name: Stop old container
+      shell: docker stop n-queen-visualiser || true
+      become_user: ubuntu
+
+    - name: Remove old container
+      shell: docker rm n-queen-visualiser || true
+      become_user: ubuntu
+
+    - name: Build Docker image
+      shell: |
+        cd /home/ubuntu/app
+        docker build -t n-queen-app .
+      become_user: ubuntu
+
+    - name: Run container
+      shell: |
+        docker run -d --name n-queen-visualiser -p 8080:80 --restart unless-stopped n-queen-app
+      become_user: ubuntu
+
+    - name: Wait for app
+      wait_for:
+        port: 8080
+        delay: 3
+        timeout: 30
+
+    - name: Show success message
+      debug:
+        msg: "✓ App running at http://{{ ansible_host }}:8080"

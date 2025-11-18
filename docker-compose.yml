@@ -1,0 +1,15 @@
+services:
+  n-queen-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: n-queen-visualiser
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,84 @@
+---
+- name: Install and Configure Nagios Monitoring
+  hosts: webservers
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Install Nagios and plugins
+      apt:
+        name:
+          - nagios4
+          - nagios-plugins
+          - nagios-nrpe-server
+          - apache2-utils
+        state: present
+        update_cache: yes
+
+    - name: Create Nagios admin user
+      shell: htpasswd -cb /etc/nagios4/htpasswd.users nagiosadmin admin123
+      args:
+        creates: /etc/nagios4/htpasswd.users
+
+    - name: Set permissions on htpasswd file
+      file:
+        path: /etc/nagios4/htpasswd.users
+        mode: '0640'
+        owner: root
+        group: www-data
+
+    - name: Create Docker check script file
+      copy:
+        dest: /usr/local/bin/check_docker_container.sh
+        mode: '0755'
+        content: |
+          #!/bin/bash
+          CONTAINER=$1
+          if docker ps | grep -q "$CONTAINER"; then
+              echo "OK - Container $CONTAINER is running"
+              exit 0
+          else
+              echo "CRITICAL - Container $CONTAINER is not running"
+              exit 2
+          fi
+
+    - name: Create Nagios monitoring config
+      copy:
+        dest: /etc/nagios4/conf.d/docker-monitoring.cfg
+        content: |
+          define service {
+              use                     generic-service
+              host_name               localhost
+              service_description     N-Queen App on Port 8080
+              check_command           check_http!-p 8080
+          }
+
+    - name: Enable Apache CGI module
+      shell: a2enmod cgi && a2enmod rewrite
+
+    - name: Fix Nagios Apache configuration to allow external access
+      shell: |
+        sed -i 's/Require ip.*$/Require all granted/' /etc/apache2/conf-available/nagios4-cgi.conf
+
+    - name: Restart Nagios
+      systemd:
+        name: nagios4
+        state: restarted
+        enabled: yes
+
+    - name: Restart Apache
+      systemd:
+        name: apache2
+        state: restarted
+        enabled: yes
+
+    - name: Show success message
+      debug:
+        msg: 
+          - "=================================="
+          - "Nagios Monitoring Installed!"
+          - "=================================="
+          - "Access: http://{{ ansible_host }}/nagios4"
+          - "Username: nagiosadmin"
+          - "Password: admin123"
+          - "=================================="

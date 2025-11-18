@@ -1,0 +1,24 @@
+name: CI - Basic Checks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Verify README exists
+      run: |
+        if [ ! -f README.md ]; then
+          echo "README.md not found"; exit 1;
+        fi
+        echo "README.md found"
+
+    - name: List top-level files
+      run: ls -la
