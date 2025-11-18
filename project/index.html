@@ -1,114 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Learning Platform Pro — CI/CD + DevTinder Hub</title>
-
-  <!-- Three.js CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r148/three.min.js"></script>
-
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Platform Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="header">
-    <h1>🚀 Learning Platform Pro — CI/CD + DevTinder Hub</h1>
-    <div class="nav">
-      <a href="#pipeline">Pipeline</a>
-      <a href="#courses">Courses</a>
-      <a href="#devtinder">Team</a>
-      <a href="#contact">Contact</a>
-      <button id="authBtn" class="btn secondary">Login / Signup</button>
-    </div>
-  </header>
 
-  <main class="container">
-    <!-- Welcome + Quick Actions -->
-    <section class="card flex welcomeCard">
-      <div>
-        <div class="welcomeTitle" id="greetingTitle">Welcome to Learning Platform Pro</div>
-        <div class="small">Interactive CI/CD learning, 3D pipeline, courses and developer networking</div>
-        <div style="margin-top:10px;">
-          <button id="runDemoBtn" class="btn">Try Demo Pipeline</button>
-          <button id="openCoursesBtn" class="btn secondary">Open Courses</button>
-        </div>
-      </div>
-      <div style="text-align:right">
-        <div id="userPanel" class="userBadge">Not signed in</div>
-        <div class="small" style="margin-top:8px">Sign up to save progress & chat with devs</div>
-      </div>
-    </section>
+<header>
+  <div class="logo"><strong>LearningPlatform</strong></div>
+  <nav>
+    <button class="navBtn" data-target="coursesSection">Courses</button>
+    <button class="navBtn" data-target="devSection">Meet Developers</button>
+    <button class="navBtn" data-target="pipelineSection">Pipeline</button>
+    <button class="navBtn" data-target="stepsSection">Steps</button>
+    <button class="navBtn" data-target="contactSection">Contact</button>
+  </nav>
+  <div id="userPanel">Not signed in</div>
+  <button id="authBtn" class="btn primary">Login / Signup</button>
+</header>
 
-    <div class="grid">
-      <!-- 3D Pipeline -->
-      <section id="pipeline" class="card">
-        <h2>🔧 3D CI/CD Pipeline</h2>
-        <div class="pipelineWrap">
-          <canvas id="threeCanvas"></canvas>
-          <div class="pipelineOverlay">
-            <div class="legend"><span>Nodes: Code → Build → Test → Deploy → Monitor</span></div>
-            <div id="pipelineStatus" class="small">Status: Idle</div>
-          </div>
-        </div>
-        <div style="margin-top:12px;display:flex;gap:8px">
-          <button id="start3DPipeline" class="btn">Start 3D Pipeline</button>
-          <button id="explainPipeline" class="btn secondary">Step-by-step</button>
-        </div>
-      </section>
+<main>
+  <!-- Greeting -->
+  <section id="greetingSection">
+    <h1 id="greetingTitle">Welcome to Learning Platform Pro</h1>
+    <button id="openCoursesBtn" class="btn primary">Open First Course</button>
+  </section>
 
-      <!-- Courses -->
-      <section id="courses" class="card">
-        <h2>📚 Courses</h2>
-        <div id="coursesList" class="coursesColumn">
-          <!-- injected by JS -->
-        </div>
-      </section>
+  <!-- Courses Section -->
+  <section id="coursesSection">
+    <h2>Courses</h2>
+    <div id="coursesList" class="cardsWrap"></div>
+  </section>
 
-      <!-- DevTinder -->
-      <section id="devtinder" class="card">
-        <h2>🤝 DevTinder — Meet Developers</h2>
-        <div class="devtinderList" id="devList"></div>
-      </section>
+  <!-- Meet Developers Section -->
+  <section id="devSection">
+    <h2>Meet Developers</h2>
+    <div id="devList" class="cardsWrap"></div>
+  </section>
 
-      <!-- Contact -->
-      <section id="contact" class="card contactCard">
-        <h2>📞 Contact & Feedback</h2>
-        <div class="contactBox">
-          <div class="contactLeft">
-            <div class="small">Have a question or want to collaborate? Send us a message.</div>
-            <div style="margin-top:14px">
-              <input id="contactName" placeholder="Full name" />
-              <input id="contactEmail" placeholder="Email address" />
-              <textarea id="contactMessage" placeholder="How can we help?"></textarea>
-            </div>
-          </div>
-          <div class="contactRight">
-            <div class="contactMeta">
-              <strong>Contact</strong>
-              <p>support@learningpro.example</p>
-              <p class="small">Response within 24–48 hours (demo storage)</p>
-            </div>
-            <div style="margin-top:auto">
-              <button id="sendContact" class="btn">Send Message</button>
-              <button id="clearContact" class="btn secondary">Clear</button>
-            </div>
-          </div>
-        </div>
-        <div id="contactResult" class="small" style="margin-top:10px"></div>
-      </section>
-    </div>
+  <!-- Pipeline Section -->
+  <section id="pipelineSection">
+    <h2>DevOps Pipeline</h2>
+    <div id="pipelineList" class="cardsWrap"></div>
+  </section>
 
-    <div class="footer">© 2025 Learning Platform Pro — Built with HTML/CSS/JS + Three.js</div>
-  </main>
+  <!-- Steps Section -->
+  <section id="stepsSection">
+    <h2>Project Steps</h2>
+    <div id="stepsList" class="cardsWrap"></div>
+  </section>
 
-  <!-- Modal Backdrop -->
-  <div id="modalBackdrop" class="modalBackdrop">
-    <div class="modal" id="mainModal">
-      <span class="closeX" id="closeModal">✕</span>
-      <div id="modalContent"></div>
-    </div>
+  <!-- Contact Section -->
+  <section id="contactSection">
+    <h2>Contact</h2>
+    <input id="contactName" placeholder="Name">
+    <input id="contactEmail" placeholder="Email">
+    <textarea id="contactMessage" placeholder="Message"></textarea>
+    <button id="sendContact" class="btn primary">Send</button>
+    <div id="contactResult"></div>
+  </section>
+</main>
+
+<!-- Modal -->
+<div id="modalBackdrop" class="modalBackdrop">
+  <div id="modalContent" class="modalContent">
+    <button id="closeModal" class="modalClose">✖</button>
   </div>
-  
-  <script src="script.js"></script>
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>

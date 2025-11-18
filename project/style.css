@@ -1,98 +1,289 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
-*{box-sizing:border-box}
-body{font-family:'Poppins',sans-serif;margin:0;background:linear-gradient(120deg,#071019,#10232a,#13313a);color:#e6f7ff;min-height:100vh}
-.header{display:flex;justify-content:space-between;align-items:center;padding:12px 22px;background:rgba(0,0,0,0.35);backdrop-filter:blur(6px);position:sticky;top:0;z-index:50}
-.header h1{margin:0;font-size:1.05rem;background:linear-gradient(90deg,#7efcff,#00b4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav{display:flex;gap:12px;align-items:center}
-.nav a{color:#8feaff;text-decoration:none;font-weight:600}
-.btn{background:#00f2ff;border:none;padding:10px 14px;border-radius:10px;color:#002;cursor:pointer;font-weight:700}
-.btn.secondary{background:transparent;color:#9feaff;border:1px solid rgba(159,234,255,0.15)}
-.container{padding:20px;max-width:1200px;margin:0 auto}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-@media (max-width:950px){.grid{grid-template-columns:1fr}}
-.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(0,255,255,0.04);box-shadow:0 6px 30px rgba(0,0,0,0.4)}
-.flex{display:flex;justify-content:space-between;align-items:center}
-.welcomeCard .welcomeTitle{font-weight:700;font-size:1.06rem}
-.small{font-size:0.86rem;color:#bfefff}
-.userBadge{background:rgba(0,255,255,0.08);padding:6px 10px;border-radius:999px}
-.pipelineWrap{height:360px;position:relative;border-radius:12px;overflow:hidden}
-#threeCanvas{width:100%;height:100%;display:block}
-.pipelineOverlay{position:absolute;inset:12px;pointer-events:none;display:flex;justify-content:space-between;align-items:flex-start}
-.legend span{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:8px;font-size:0.95rem}
-.team-section h2{margin-top:0}
-.coursesColumn{display:flex;flex-direction:column;gap:12px;margin-top:8px}
-.courseCard{display:flex;flex-direction:column;gap:8px;background:rgba(255,255,255,0.02);padding:12px;border-radius:10px}
-.courseMeta{display:flex;justify-content:space-between;align-items:center}
-.progressTrack{height:10px;background:rgba(255,255,255,0.05);border-radius:8px;overflow:hidden;margin-top:8px}
-.progressBar{height:100%;width:0%;background:linear-gradient(90deg,#00f2ff,#00ffb3);transition:width 0.4s}
-.devtinderList{display:flex;gap:12px;flex-wrap:wrap}
-.devtinderItem{width:180px;padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);text-align:center}
-.avatar{width:72px;height:72px;border-radius:50%;background:#071a1f;display:inline-block;margin-bottom:8px;line-height:72px}
-.tag{display:inline-block;padding:4px 8px;border-radius:999px;background:rgba(0,255,255,0.06);font-size:0.85rem}
-.contactCard, .contactBox{display:flex;gap:12px;align-items:flex-start}
-.contactCard .left, .contactCard .right{flex:1}
-.contactCard input, .contactBox input, .contactBox textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
-.contactCard .right{max-width:260px;background:rgba(255,255,255,0.02);padding:12px;border-radius:8px;display:flex;flex-direction:column;justify-content:space-between}
-.contactBox{display:flex;flex-direction:row;gap:18px;align-items:stretch}
-.contactLeft{flex:2}
-.contactRight{flex:1;max-width:280px;display:flex;flex-direction:column;justify-content:space-between}
-.modalBackdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:120}
-.modal{background:#04111a;padding:18px;border-radius:12px;min-width:320px;max-width:860px}
-.closeX{position:absolute;right:18px;top:12px;cursor:pointer}
-.chatWindow{height:320px;display:flex;flex-direction:column;border-radius:8px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));overflow:hidden}
-.chatMessages{flex:1;padding:12px;overflow:auto}
-.msg{margin-bottom:8px;padding:8px;border-radius:8px;max-width:70%}
-.msg.me{background:rgba(0,255,255,0.06);align-self:flex-end}
-.msg.them{background:rgba(255,255,255,0.03);align-self:flex-start}
-.chatInputWrap{display:flex;padding:10px;border-top:1px solid rgba(255,255,255,0.03)}
-.chatInputWrap input{flex:1;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
-.footer{padding:12px;text-align:center;color:#8feaff;margin-top:22px}
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
-*{box-sizing:border-box}
-body{font-family:'Poppins',sans-serif;margin:0;background:linear-gradient(120deg,#071019,#10232a,#13313a);color:#e6f7ff;min-height:100vh}
-.header{display:flex;justify-content:space-between;align-items:center;padding:12px 22px;background:rgba(0,0,0,0.35);backdrop-filter:blur(6px);position:sticky;top:0;z-index:50}
-.header h1{margin:0;font-size:1.05rem;background:linear-gradient(90deg,#7efcff,#00b4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav{display:flex;gap:12px;align-items:center}
-.nav a{color:#8feaff;text-decoration:none;font-weight:600}
-.btn{background:#00f2ff;border:none;padding:10px 14px;border-radius:10px;color:#002;cursor:pointer;font-weight:700}
-.btn.secondary{background:transparent;color:#9feaff;border:1px solid rgba(159,234,255,0.15)}
-.container{padding:20px;max-width:1200px;margin:0 auto}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-@media (max-width:950px){.grid{grid-template-columns:1fr}}
-.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(0,255,255,0.04);box-shadow:0 6px 30px rgba(0,0,0,0.4)}
-.flex{display:flex;justify-content:space-between;align-items:center}
-.welcomeCard .welcomeTitle{font-weight:700;font-size:1.06rem}
-.small{font-size:0.86rem;color:#bfefff}
-.userBadge{background:rgba(0,255,255,0.08);padding:6px 10px;border-radius:999px}
-.pipelineWrap{height:360px;position:relative;border-radius:12px;overflow:hidden}
-#threeCanvas{width:100%;height:100%;display:block}
-.pipelineOverlay{position:absolute;inset:12px;pointer-events:none;display:flex;justify-content:space-between;align-items:flex-start}
-.legend span{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:8px;font-size:0.95rem}
-.team-section h2{margin-top:0}
-.coursesColumn{display:flex;flex-direction:column;gap:12px;margin-top:8px}
-.courseCard{display:flex;flex-direction:column;gap:8px;background:rgba(255,255,255,0.02);padding:12px;border-radius:10px}
-.courseMeta{display:flex;justify-content:space-between;align-items:center}
-.progressTrack{height:10px;background:rgba(255,255,255,0.05);border-radius:8px;overflow:hidden;margin-top:8px}
-.progressBar{height:100%;width:0%;background:linear-gradient(90deg,#00f2ff,#00ffb3);transition:width 0.4s}
-.devtinderList{display:flex;gap:12px;flex-wrap:wrap}
-.devtinderItem{width:180px;padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);text-align:center}
-.avatar{width:72px;height:72px;border-radius:50%;background:#071a1f;display:inline-block;margin-bottom:8px;line-height:72px}
-.tag{display:inline-block;padding:4px 8px;border-radius:999px;background:rgba(0,255,255,0.06);font-size:0.85rem}
-.contactCard, .contactBox{display:flex;gap:12px;align-items:flex-start}
-.contactCard .left, .contactCard .right{flex:1}
-.contactCard input, .contactBox input, .contactBox textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
-.contactCard .right{max-width:260px;background:rgba(255,255,255,0.02);padding:12px;border-radius:8px;display:flex;flex-direction:column;justify-content:space-between}
-.contactBox{display:flex;flex-direction:row;gap:18px;align-items:stretch}
-.contactLeft{flex:2}
-.contactRight{flex:1;max-width:280px;display:flex;flex-direction:column;justify-content:space-between}
-.modalBackdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:120}
-.modal{background:#04111a;padding:18px;border-radius:12px;min-width:320px;max-width:860px}
-.closeX{position:absolute;right:18px;top:12px;cursor:pointer}
-.chatWindow{height:320px;display:flex;flex-direction:column;border-radius:8px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));overflow:hidden}
-.chatMessages{flex:1;padding:12px;overflow:auto}
-.msg{margin-bottom:8px;padding:8px;border-radius:8px;max-width:70%}
-.msg.me{background:rgba(0,255,255,0.06);align-self:flex-end}
-.msg.them{background:rgba(255,255,255,0.03);align-self:flex-start}
-.chatInputWrap{display:flex;padding:10px;border-top:1px solid rgba(255,255,255,0.03)}
-.chatInputWrap input{flex:1;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
-.footer{padding:12px;text-align:center;color:#8feaff;margin-top:22px}
+/* ---------- Global Styles ---------- */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: url('https://png.pngtree.com/thumb_back/fh260/background/20230415/pngtree-website-technology-line-dark-background-image_2344719.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  overflow-x: hidden;
+  transition: background 0.5s;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.7); /* dark overlay for readability */
+  z-index: -1;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: rgba(17, 17, 17, 0.8);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+header .logo {
+  font-size: 1.5rem;
+  color: #00f2ff;
+  text-shadow: 0 0 8px #00f2ff;
+}
+
+nav button {
+  margin-right: 12px;
+  padding: 8px 14px;
+  background: #00f2ff;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 255, 255, 0.3);
+}
+
+.navBtn:hover {
+  background: #00d4ff;
+  color: #111;
+  transform: translateY(-2px);
+}
+
+.cardsWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.courseCard, .devtinderItem {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  padding: 16px;
+  border-radius: 12px;
+  width: 300px;
+  transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.courseCard:hover, .devtinderItem:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 20px rgba(0, 255, 255, 0.2);
+}
+
+.courseMeta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.small {
+  font-size: 0.8rem;
+  color: #9feaff;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.primary {
+  background: #00f2ff;
+  color: #000;
+  font-weight: 700;
+  box-shadow: 0 3px 6px rgba(0, 255, 255, 0.4);
+}
+
+.primary:hover {
+  background: #00d4ff;
+  transform: translateY(-2px);
+}
+
+.secondary {
+  background: rgba(17, 17, 17, 0.6);
+  color: #00f2ff;
+  border: 1px solid #00f2ff;
+  box-shadow: 0 2px 6px rgba(0, 255, 255, 0.2);
+}
+
+.secondary:hover {
+  background: rgba(17, 17, 17, 0.8);
+  transform: translateY(-2px);
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #00f2ff;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 8px rgba(0, 255, 255, 0.4);
+}
+
+.tag {
+  background: rgba(17, 17, 17, 0.6);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.modalBackdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: rgba(17, 17, 17, 0.9);
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px rgba(0, 255, 255, 0.3);
+}
+
+.modalClose {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+}
+
+.videoCallScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.call-controls {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.control-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  background: rgba(0, 255, 255, 0.1);
+  color: #00f2ff;
+  transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+  background: rgba(0, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.progressTrack {
+  background: rgba(255, 255, 255, 0.1);
+  height: 6px;
+  border-radius: 3px;
+  margin-top: 6px;
+}
+
+.progressBar {
+  height: 6px;
+  background: #00f2ff;
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.profile-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.profile-item {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(17, 17, 17, 0.6);
+  color: #fff;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  background: rgba(17, 17, 17, 0.8);
+  box-shadow: 0 0 10px #00f2ff;
+}
+
+section {
+  padding: 40px 20px;
+  margin: 20px auto;
+  background: rgba(15, 15, 15, 0.25);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  max-width: 1200px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 255, 255, 0.2);
+}
+
+/* ---------- Pipeline Styles ---------- */
+.pipelineStep {
+  background: #111;
+  color: #8feaff;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.pipelineStep:hover {
+  transform: scale(1.03);
+  background: #1a1a1a;
+  box-shadow: 0 6px 16px rgba(0, 255, 255, 0.3);
+}

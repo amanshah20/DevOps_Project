@@ -28,7 +28,7 @@ If any of the above are missing, install them first. On Windows, use WSL for Ans
 1. Clone the repo and change directory:
 
 ```bash
-git clone https://github.com/amanshah20/N-Queen-Visualiser.git
+git clone https://github.com/amanshah20/DevOps_Project.git
 cd N-Queen-Visualiser
 ```
 
